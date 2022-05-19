@@ -5,7 +5,7 @@ const cors = require('cors');
 const fs = require('fs');
 
 const app = express()
-const storagepath = "../storage"
+const storagepath =  "./storage"
 const PORT = 4000
 
 app.use(cors())
@@ -21,12 +21,13 @@ app.get('/', function(req,res) {
 //list of all models
 app.get('/listall', function(req,res) {
     fs.readdir(storagepath, function (err, files) {
+        console.log(files)
         res.json({Models: files})
     });
 })
 
 app.post('/storeamodel', function(req,res) {
-    let path = '../storage/' + req.files.model.name;
+    let path = storagepath + req.files.model.name;
     (req.files.model).mv(path)
     res.send('file recieved')
 })
