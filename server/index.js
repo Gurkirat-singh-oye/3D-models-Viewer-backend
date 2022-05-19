@@ -36,4 +36,4 @@ app.post('/storeamodel', function(req,res) {
 //     res.json({message: "welcome to stored models"})
 // })
 
-app.listen(PORT, () => {console.log(`up and running on http://localhost:${PORT}`)})
+app.listen(process.env.PORT || PORT, () => {console.log(`up and running on http://localhost:${PORT}`)})
