@@ -2,10 +2,11 @@ const express = require("express");
 const path = require('path');
 const fileup = require('express-fileupload')
 const cors = require('cors');
+const { google } = require('googleapis')
 const fs = require('fs');
 
 const app = express()
-const storagepath =  "./storage"
+const storagepath =  "./storage/"
 const PORT = 4000
 
 app.use(cors())
@@ -31,9 +32,5 @@ app.post('/storeamodel', function(req,res) {
     (req.files.model).mv(path)
     res.send('file recieved')
 })
-
-// app.get('/models/:name', function(req,res) {
-//     res.json({message: "welcome to stored models"})
-// })
 
 app.listen(process.env.PORT || PORT, () => {console.log(`up and running on http://localhost:${PORT}`)})
